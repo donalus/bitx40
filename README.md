@@ -2,7 +2,7 @@
 BITX40 sketch for Raduino
 
 This sketch is intended as universal, standard Raduino software that should always work, even on a unmodified out-of-the-box BITX40 + raduino board. Without any hardware modifications the sketch provides the standard basic LSB functionality.
-The sketch provides additional features such as USB, CW, RIT/SPLIT etc., but these will only become functional when the related (minimal) hardware mods are made. See the operating and modification instructions at https://github.com/amunters/bitx40/blob/master/operating%20instructions for full details.
+The sketch provides additional features such as USB, CW, RIT/SPLIT, KEYER etc., but these will only become functional when the related (minimal) hardware mods are made. See the operating and modification instructions at https://github.com/amunters/bitx40/blob/master/operating%20instructions for full details.
 
 Note: Since v1.20 it is no longer required to download and install the SI5351 library. Minimalist routines to drive the SI5351 are now embedded in the sketch.
 
@@ -11,6 +11,38 @@ I develop and maintain ham radio software as a hobby and distribute it for free.
 [![Donate](https://www.paypalobjects.com/en_US/GB/i/btn/btn_donateCC_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=PTAMBM6QT8LP8)
 
 Revision record
+
+v1.25.1
+- some minor bug corrections to the touch keyer calibration code.
+
+v1.25
+- Added Capacitive Touch Keyer support.
+
+v1.24
+- Optimized CW keyer timing characteristics for smoother keying (tks Hidehiko, JA9MAT)
+- Added DIAL LOCK function: Press the Function Button and then the SPOT button simultanuously to lock the dial. Press the FB again to unlock.
+
+v1.23.1
+- corrected bug that the 'auto-space' setting interfered with the 'maximum frequency' setting due to incorrect EEPROM location
+- corrected bug that the display became cluttered up in the SETTINGS menu (CW parameters), when CW key was down
+
+v1.23
+- It is now possible to enable/disable the keyer's auto-space function from the SETTINGS menu (default setting is OFF).
+- Added Vibroplex bug emulation to the CW keyer
+- Moved all user setting parameters to the top of the sketch for in case you want to edit them manually
+- Optimized some code in the keyer routine (tks Pavel CO7WT)
+
+v1.22
+- Added some functionality allowing the user to choose "paddle" or "reversed paddle" from the SETTINGS menu
+
+v1.21
+- Added automatic CW keyer functionality.
+  The default setup is for straight key operation. If you want to use the automatic keyer, connect a paddle keyer to
+  pin A1 (dit) and pin D3 (dah). In the SETTINGS menu, set CW-key type to "paddle".
+  While keying, the keyer speed can be adjusted by pressing the Function Button (speed up) or the SPOT button (speed down).
+  Keyer speed can be set from 1 - 50 WPM.
+- It is now possible to set the minimum and maximum tuning frequency via the SETTINGS menu (no longer need to edit the sketch).
+- Improved the tuning pot behaviour at the lower and upper ends of the pot.
 
 v1.20.1
 - Added some constraints so that frequency limits are respected during fast up/down scanning
